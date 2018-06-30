@@ -20,4 +20,4 @@ CREATE TABLE IF NOT EXISTS hpuser(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO hpuser VALUES(DEFAULT,'tom','123321','tom@qq.com');
-SELECT * FROM hpuser;
+SELECT * FROM hpuser WHERE uname='zs' AND upwd=md5('123') ;
