@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <link href="<?php echo __HOME_CSS__;?>bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="<?php echo __HOME_CSS__;?>style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Doctor Plus Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //Custom Theme files -->
+    <!-- js -->
+    <script src="<?php echo __HOME_JS__;?>jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <!-- start-smoth-scrolling-->
+    <script type="text/javascript" src="<?php echo __HOME_JS__;?>move-top.js"></script>
+    <script type="text/javascript" src="<?php echo __HOME_JS__;?>easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+            });
+        });
+    </script>
+    <!--//end-smoth-scrolling-->
+</head>
+<body>
+<!--header-->
+<!--引入公共代码-->
+<?php include_once __HOME_COMMON__."index_header.html"; ?>
+<!--//header-bottom-->
+<!--contact-->
+<div class="contact">
+    <div class="container">
+        <h3>Contact us</h3>
+        <div class="contact-form">
+            <form action="#" id="myform" method="post">
+                <input type="text" name="uname" id="uname" value="Name" onfocus="this.value = '';"
+                       onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                <div class="col-md-6 cnt-inpt">
+                    <input type="email" name="uemail" id="uemail" value="Email" onfocus="this.value = '';"
+                           onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                </div>
+                <div class="col-md-6 cnt-inpt">
+                    <input type="text" value="Telephone" name="uphone" id="uphone" onfocus="this.value = '';"
+                           onblur="if (this.value == '') {this.value = 'Telephone';}" required="">
+                </div>
+                <div class="clearfix"></div>
+                <textarea name="umessage" id="umessage" onfocus="this.value = '' ;"
+                          onblur="if (this.value == '') {this.value = 'Message...';}"
+                          required=""> Message... </textarea>
+                <input type="submit" id="sub" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
+<!--//contact-->
+<!--ajax提交数据-->
+<script type="text/javascript">
+    $(function () {
+        $("#sub").click(function () {
+            $.post(
+                'index.php?g=home&c=index&a=guestbook',
+                $("#myform").serialize(),
+                function (result) {
+                    if (result.errno == 200) {
+                        alert(result.mess+"\n点击确定按钮返回网站首页。");
+                        window.location.href="index.php";
+                    }else{
+                        window.location.href="index.php?g=home&c=index&a=contact";
+                    }
+                },
+                "json"
+            );
+            return false;
+        });
+    });
+</script>
+<!--footer-->
+<!--引入底部公共代码-->
+<?php include_once __HOME_COMMON__."index_footer.html"; ?>
+<!--smooth-scrolling-of-move-up-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+        };
+        */
+
+        $().UItoTop({easingType: 'easeOutQuart'});
+
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!--//smooth-scrolling-of-move-up-->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="<?php echo __HOME_JS__;?>bootstrap.js"></script>
+</body>
+</html>

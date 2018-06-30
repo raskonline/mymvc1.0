@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link href="<?php echo __HOME_CSS__;?>bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo __HOME_CSS__;?>style.css" type="text/css" rel="stylesheet" media="all">
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Doctor Plus Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="<?php echo __HOME_JS__;?>jquery-1.11.1.min.js"></script>
+<!-- //js -->	
+<!-- start-smoth-scrolling-->
+<script type="text/javascript" src="<?php echo __HOME_JS__;?>move-top.js"></script>
+<script type="text/javascript" src="<?php echo __HOME_JS__;?>easing.js"></script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+<!--//end-smoth-scrolling-->
+</head>
+<body>
+	<!--header-->
+
+	<!--//header-->
+	<!--header-bottom-->
+	<!--引入公共代码-->
+	<?php include_once __HOME_COMMON__."index_header.html"; ?>
+
+	<!--//header-bottom-->
+	<!--banner-->
+	<div class="banner">
+		<div class="container ">
+			<!-- banner-text Slider starts Here -->
+			<script src="<?php echo __HOME_JS__;?>responsiveslides.min.js"></script>
+			 <script>
+				// You can also use "$(window).load(function() {"
+					$(function () {
+					// Slideshow 4
+						$("#slider3").responsiveSlides({
+						auto: true,
+						pager:true,
+						nav:false,
+						speed: 500,
+						namespace: "callbacks",
+						before: function () {
+						$('.events').append("<li>before event fired.</li>");
+						},
+						after: function () {
+							$('.events').append("<li>after event fired.</li>");
+						}
+					});	
+				});
+			</script>
+			<!--//End-slider-script -->
+			<div  id="top" class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="banner-text">		
+							<h1>We are here to care for you</h1>
+							<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+						</div>
+					</li>
+					<li>
+						<div class="banner-text">		
+							<h1>Lorem ip sum avai re for cayou</h1>
+							<p>Majority have sufferedorem lipsum available, but the  alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+						</div>
+					</li>
+					<li>
+						<div class="banner-text">		
+							<h1>Availf able lor emip cayou refor</h1>
+							<p>Randomised words orem ipsum available, but the majority have suffered alteration in some form, by injected humour, or which don't look even slightly believable.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--//banner-->
+	<!--banner-bottom-->
+	<div class="banner-bottom">
+		<div class="container">
+			<h2>Lorem Ipsum was popularised in the with the release of Letraset sheets containing</h2>
+			<a href="#gallery" class="arrow scroll"> </a>
+		</div>
+	</div>
+	<!--//banner-bottom-->
+	<!--gallery-->
+	<div class="gallery" id="gallery">
+		<div class="col-md-6 gallery-left">
+			<h4>Letraset sheets</h4>
+			<p>Lorem Ipsum was popularised in the with the release of Letraset sheets contai ningthe with the release of </p>
+		</div>
+		<div class="col-md-6 gallery-right">
+			<div class="gallery-grid-a">
+				<h4>Letraset sheets</h4>
+				<p>Lorem Ipsum was popularised in the with the release of Letraset sheets contai ningthe with the release of </p>
+			</div>	
+			<div class="gallery-grid-b">		
+				<h4>Letraset sheets</h4>
+			<p>Lorem Ipsum was popularised in the with the release of Letraset sheets contai ningthe with the release of </p>
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!--//gallery-->
+	<!--work-->
+	<div class="work">		
+		<div class="container">	
+			<div class="work-title">
+				<h3>More projects</h3>
+				<p>Lorem Ipsum was popularised in the with the release of Letraset sheets contai ningthe</p>
+			</div>
+			<div class="col-md-4 work-grids">
+				<ul>
+					<li><img src="<?php echo __HOME_IMAGES__;?>icon2.png" alt=""></li>
+					<li>
+						<h4>Quas molestias excep</h4>
+						<p>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+					</li>
+				</ul>
+			</div>	
+			<div class="col-md-4 work-grids">
+				<ul>
+					<li><img src="<?php echo __HOME_IMAGES__;?>icon3.png" alt=""></li>
+					<li>
+						<h4>occaecati cupiusint</h4>
+						<p>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-4 work-grids">
+				<ul>
+					<li><img src="<?php echo __HOME_IMAGES__;?>icon4.png" alt=""></li>
+					<li>
+						<h4>Excepturi sint occa</h4>
+						<p>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--//work-->
+    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+	<div class="like">		
+		<div class="container">
+			<div class="work-title">
+				<h3>Stay connected with us</h3>
+				<p class="cnnct">Lorem Ipsum was popularised in the with the release of Letraset sheets contai ningthe</p>
+			</div>
+			<div class="col-md-3 like-grids">
+				<a href="#">
+					<img src="<?php echo __HOME_IMAGES__;?>icon1.png" alt=""/>
+				</a>
+				<p>Facebook</p>
+			</div>
+			<div class="col-md-3 like-grids">
+				<a href="#">
+					<img src="<?php echo __HOME_IMAGES__;?>icon5.png" alt=""/>
+				</a>
+				<p>Twitter</p>
+			</div>
+			<div class="col-md-3 like-grids">
+				<a href="#">
+					<img src="<?php echo __HOME_IMAGES__;?>icon6.png" alt=""/>
+				</a>
+				<p>Pinterest</p>
+			</div>
+			<div class="col-md-3 like-grids">
+				<a href="#">
+					<img src="<?php echo __HOME_IMAGES__;?>icon7.png" alt=""/>
+				</a>
+				<p>Googleplus</p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--map-->
+	<!--//map-->
+	<!--footer-->
+	<!--//footer-->
+		<!--引入底部公共代码-->
+		<?php include_once __HOME_COMMON__."index_footer.html"; ?>
+
+	<!--smooth-scrolling-of-move-up-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!--//smooth-scrolling-of-move-up-->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="<?php echo __HOME_JS__;?>bootstrap.js"> </script>
+</body>
+</html>

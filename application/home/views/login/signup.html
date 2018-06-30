@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SignUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<?php echo __LOGIN_CSS__;?>bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo __LOGIN_CSS__;?>animate.css">
+    <link rel="stylesheet" href="<?php echo __LOGIN_CSS__;?>style.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <!-- Start Sign In Form -->
+            <form action="#" method="post" id="regform" class="fh5co-form animate-box"
+                  data-animate-effect="fadeIn">
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <div class="alert alert-success" id="alertmess" role="alert">Your info has been saved.</div>
+                </div>
+                <div class="form-group">
+                    <label for="uname" class="sr-only">Name</label>
+                    <input type="text" name="uname" class="form-control" id="uname" placeholder="Name"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="uemail" class="sr-only">Email</label>
+                    <input type="text" name="uemail" class="form-control" id="uemail" placeholder="Email"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="upwd" class="sr-only">Password</label>
+                    <input type="password" name="upwd" class="form-control" id="upwd" placeholder="Password"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="reupwd" class="sr-only">Re-type Password</label>
+                    <input type="password" class="form-control" id="reupwd" placeholder="Re-type Password"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="remember"><input type="checkbox" name="remember" id="remember"> Remember Me</label>
+                </div>
+                <div class="form-group">
+                    <p>Already registered? <a href="index.php?g=home&c=login&a=index">Sign In</a></p>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="sub" value="Sign Up" class="btn btn-primary">
+                </div>
+            </form>
+            <!-- END Sign In Form -->
+
+        </div>
+    </div>
+    <div class="row" style="padding-top: 60px; clear: both;">
+        <div class="col-md-12 text-center">
+            <p>
+                <small>&copy; 版权属于治愈系医疗企业 <a href="#" target="_blank" title="治愈系医疗企业">治愈系医疗企业</a> - Collect from <a
+                        href="#" title="治愈系医疗企业" target="_blank">治愈系医疗企业</a></small>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="<?php echo __LOGIN_JS__;?>jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo __LOGIN_JS__;?>bootstrap.min.js"></script>
+<!-- Placeholder -->
+<script src="<?php echo __LOGIN_JS__;?>jquery.placeholder.min.js"></script>
+<!-- Waypoints -->
+<script src="<?php echo __LOGIN_JS__;?>jquery.waypoints.min.js"></script>
+<!-- Main JS -->
+<script src="<?php echo __LOGIN_JS__;?>main.js"></script>
+
+<!--表单ajax提交-->
+<script type="text/javascript">
+
+    /**表单校验*/
+    function check() {
+        var flag = true;
+        $("#uname").blur(function () {
+            var $uname = $(this).val();
+            if ($uname == "") {
+                $("#alertmess").html("用户名不允许为空！").css("color", "red");
+                flag = false;
+                return;
+            }
+            $.post(
+                'index.php?g=home&c=user&a=checkUserByName',
+                {"uname": $uname},
+                function (result) {
+                    if (result == 0) {
+                        $("#alertmess").html("用户名可以使用！");
+
+                    } else {
+                        $("#alertmess").html("用户名已被占用!").css("color", "red");
+                        flag = false;
+                        return;
+                    }
+
+                }
+            );
+        }).focus(function () {
+            $("#alertmess").html("Your info has been saved.");
+        });
+
+        $("#uemail").blur(function () {
+            if ($(this).val() == "") {
+                $("#alertmess").html("邮箱不允许为空！").css("color", "red");
+                flag = false;
+                return;
+            }
+        }).focus(function () {
+            $("#alertmess").html("Your info has been saved.");
+        });
+
+        $("#upwd").blur(function () {
+            if ($(this).val() == "") {
+                $("#alertmess").html("密码不允许为空！").css("color", "red");
+                flag = false;
+                return;
+            }
+        }).focus(function () {
+            $("#alertmess").html("Your info has been saved.");
+        });
+
+        $("#reupwd").blur(function () {
+            if ($(this).val() == "") {
+                $("#alertmess").html("确认密码不允许为空！").css("color", "red");
+                flag = false;
+                return;
+            }
+            if ($(this).val() != $("#upwd").val()) {
+                $("#alertmess").html("两次密码不一致！").css("color", "red");
+                flag = false;
+                return;
+            }
+        }).focus(function () {
+            $("#alertmess").html("Your info has been saved.");
+        });
+        return flag;
+    }
+
+
+    $(function () {
+        //点击提交按钮
+        if (!check()) return false;
+        $("#sub").click(function () {
+            $.post(
+                'index.php?g=home&c=user&a=register',
+                $("#regform").serialize(),
+                function (result) {
+                    $("#alertmess").html(result.mess);
+                },
+                "json"
+            );
+            $('#regform')[0].reset();//复位表单
+            return false;
+        });
+    })
+</script>
+
+</body>
+</html>
+

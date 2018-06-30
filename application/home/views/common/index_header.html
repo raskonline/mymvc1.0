@@ -1,0 +1,47 @@
+<div class="header">
+    <div class="container">
+        <div class="header-logo">
+            <a href="index.html"><img src="<?php echo __HOME_IMAGES__;?>logo.png" alt="logo"/></a>
+        </div>
+        <div class="header-info">
+            <p>Information Service:</p>
+            <h4>000-1234-1234</h4>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<div class="header-bottom">
+    <div class="container">
+        <!--top-nav-->
+        <div class="top-nav cl-effect-5">
+            <span class="menu-icon"><img src="<?php echo __HOME_IMAGES__;?>menu-icon.png" alt=""/></span>
+            <ul class="nav1">
+                <li><a href="index.php"  <?php if(\core\Application::$action=='index') echo 'class="active"'; ?>>
+                    <span data-hover="Home">Home</span></a>
+                </li>
+                <li><a href="index.php?g=home&c=index&a=about" <?php if(\core\Application::$action=='about') echo 'class="active"'; ?>> <span data-hover="About">About</span></a></li>
+                <li><a href="index.php?g=home&c=index&a=services" <?php if(\core\Application::$action=='services') echo 'class="active"'; ?>> <span data-hover="Services">Services</span></a></li>
+                <li><a href="index.php?g=home&c=index&a=news" <?php if(\core\Application::$action=='news') echo 'class="active"'; ?>> <span data-hover="News">News</span></a></li>
+                <li><a href="index.php?g=home&c=index&a=contact" <?php if(\core\Application::$action=='contact') echo 'class="active"'; ?>> <span data-hover="Contact">Contact</span></a></li>
+                <li><a href="index.php?g=home&c=login&a=index"> <span data-hover="Login">Login</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $( "span.menu-icon" ).click(function() {
+                    $( "ul.nav1" ).slideToggle( 300, function() {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- /script-for-menu -->
+        </div>
+        <!--//top-nav-->
+        <form class="navbar-form navbar-right">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="submit" class="btn btn-default"></button>
+            </div>
+        </form>
+        <div class="clearfix"> </div>
+    </div>
+</div>
