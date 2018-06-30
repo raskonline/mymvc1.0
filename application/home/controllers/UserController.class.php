@@ -53,4 +53,9 @@ class UserController extends Controller
         }
         echo json_encode($feedback,JSON_UNESCAPED_UNICODE);
     }
+
+    /**用户中心*/
+    public function usercenter(){
+        $this->display("index");
+    }
 }
