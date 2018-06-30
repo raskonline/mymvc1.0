@@ -31,15 +31,26 @@ class UserController extends Controller
         if($result>0){
             $feedback=["errno"=>200,"mess"=>"注册成功！"];
         }
-
         echo json_encode($feedback,JSON_UNESCAPED_UNICODE);
     }
 
     /**判断用户名是否存在*/
-    public function checkUserByName(){
+    public function checkname(){
         $args=[$_POST['uname']];
         $um=new UserModel();
         $result=$um->getUserByName($args);
-        echo $result[0]['result'];
+        echo $result['result'];
+    }
+
+    /**登陆*/
+    public function login(){
+        $feedback=["errno"=>500,"mess"=>"账号密码不正确！"];
+        $args=[$_POST['uname'],md5($_POST['upwd'])];
+        $um=new UserModel();
+        $user=$um->getUserByNameAndPassword($args);
+        if($user!=null){
+            $feedback=["errno"=>200,"mess"=>"登陆成功！"];
+        }
+        echo json_encode($feedback,JSON_UNESCAPED_UNICODE);
     }
 }

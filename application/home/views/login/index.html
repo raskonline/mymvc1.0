@@ -17,25 +17,31 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <!-- Start Sign In Form -->
-            <form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+            <form action="index.php?g=home&c=user&a=login" method="post" id="loginform" class="fh5co-form animate-box"
+                  data-animate-effect="fadeIn">
                 <h2>Sign In</h2>
                 <div class="form-group">
-                    <label for="username" class="sr-only">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Username" autocomplete="off">
+                    <div class="alert alert-success" id="alertmess" role="alert">Your info has been saved.</div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="sr-only">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
+                    <label for="uname" class="sr-only">Username</label>
+                    <input type="text" name="uname" class="form-control" id="uname" placeholder="Username"
+                           autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
+                    <label for="upwd" class="sr-only">Password</label>
+                    <input type="password" name="upwd" class="form-control" id="upwd" placeholder="Password"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="remember"><input type="checkbox" name="remember" id="remember"> Remember Me</label>
                 </div>
                 <div class="form-group">
                     <p>Not registered? <a href="index.php?g=home&c=login&a=signup">Sign Up</a> | <a
                             href="index.php?g=home&c=login&a=forgot">Forgot Password?</a></p>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Sign In" class="btn btn-primary">
+                    <input type="submit" id="loginbtn" value="Sign In" class="btn btn-primary">
                 </div>
             </form>
             <!-- END Sign In Form -->
@@ -43,7 +49,12 @@
         </div>
     </div>
     <div class="row" style="padding-top: 60px; clear: both;">
-        <div class="col-md-12 text-center"><p><small>&copy; 版权属于治愈系医疗企业 <a href="#" target="_blank" title="治愈系医疗企业">治愈系医疗企业</a> - Collect from <a href="#" title="治愈系医疗企业" target="_blank">治愈系医疗企业</a></small></p></div>
+        <div class="col-md-12 text-center">
+            <p>
+                <small>&copy; 版权属于治愈系医疗企业 <a href="#" target="_blank" title="治愈系医疗企业">治愈系医疗企业</a> - Collect from <a
+                        href="#" title="治愈系医疗企业" target="_blank">治愈系医疗企业</a></small>
+            </p>
+        </div>
     </div>
 </div>
 
@@ -57,6 +68,50 @@
 <script src="<?php echo __LOGIN_JS__;?>jquery.waypoints.min.js"></script>
 <!-- Main JS -->
 <script src="<?php echo __LOGIN_JS__;?>main.js"></script>
+
+<!--ajax登陆-->
+<script type="application/javascript">
+    $(function () {
+
+        /**用户名密码校验*/
+        function check() {
+            if ($("#uname").val() == "" || $("#upwd").val() == "") {
+                $("#alertmess").html("用户名密码不允许为空！");
+                return false;
+            } else {
+                $("#alertmess").html("Your info has been saved.");
+                return true;
+            }
+        }
+
+
+        /**登陆*/
+        $("#loginbtn").click(function () {
+            if (!check()) {
+                return false;
+            }
+            $.post(
+                'index.php?g=home&c=user&a=login',
+                $("#loginform").serialize(),
+                function (result) {
+                    if (result.errno == 200) {
+                        $("#alertmess").html("登陆成功！");
+                        alert(result.mess + "\n点击确认按钮进入系统首页！");
+                        window.location.href = "index.php";
+                    } else {
+                        $("#alertmess").html("用户名密码不正确！");
+                    }
+                },
+                "json"
+            );
+            return false;
+
+        });
+
+    });
+</script>
+
+
 
 
 </body>
