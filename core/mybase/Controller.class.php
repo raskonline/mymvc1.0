@@ -21,8 +21,13 @@ class Controller
         $this->view->view_dir="application/".Application::$group."/views/".strtolower(Application::$controller)."/";
     }
 
-    /**调用视图对象渲染数据方法*/
+    /**调用视图对象呈现视图方法*/
     protected function display($viewname=null){
         $this->view->display($viewname);
+    }
+
+    /**调用视图对象数据填充方法*/
+    protected function assign($name,$value){
+        $this->view->assign($name,$value);
     }
 }
