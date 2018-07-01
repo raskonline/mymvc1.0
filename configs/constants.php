@@ -16,3 +16,12 @@ define("__LOGIN__","public/login/");
 define("__LOGIN_CSS__",SERVER_URL.__LOGIN__."css/");
 define("__LOGIN_IMAGES__",SERVER_URL.__LOGIN__."images/");
 define("__LOGIN_JS__",SERVER_URL.__LOGIN__."js/");
+
+
+//定义后台静态资源常量
+define("__ADMIN__","public/admin/");
+define("__ADMIN_CSS__",SERVER_URL.__ADMIN__."css/");
+define("__ADMIN_IMAGES__",SERVER_URL.__ADMIN__."images/");
+define("__ADMIN_JS__",SERVER_URL.__ADMIN__."js/");
+//定义后台公共代码文件的地址常量
+define("__ADMIN_COMMON__","application/admin/views/common/");

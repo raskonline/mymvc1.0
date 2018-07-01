@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理后台登陆</title>
+    <link href="<?php echo __ADMIN_CSS__;?>bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo __ADMIN_CSS__;?>datepicker3.css" rel="stylesheet">
+    <link href="<?php echo __ADMIN_CSS__;?>styles.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">Administrator Login</div>
+            <div class="panel-body">
+                <form role="form" method="post" action="#" id="loginform">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="alert alert-success" id="alertmess" role="alert">Your info has been saved.</div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Account" name="account" id="account" type="text"
+                                   autofocus="">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Password" name="password" id="password"
+                                   type="password" value="">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" name="remember" type="checkbox" value="Remember Me">Remember Me
+                            </label>
+                        </div>
+                        <a href="#" id="loginbtn" class="btn btn-primary">Login</a>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div><!-- /.col-->
+</div><!-- /.row -->
+
+
+<script src="<?php echo __ADMIN_JS__;?>jquery-1.11.1.min.js"></script>
+<script src="<?php echo __ADMIN_JS__;?>bootstrap.min.js"></script>
+<script src="<?php echo __ADMIN_JS__;?>chart.min.js"></script>
+<script src="<?php echo __ADMIN_JS__;?>chart-data.js"></script>
+<script src="<?php echo __ADMIN_JS__;?>easypiechart.js"></script>
+<script src="<?php echo __ADMIN_JS__;?>easypiechart-data.js"></script>
+<script src="<?php echo __ADMIN_JS__;?>bootstrap-datepicker.js"></script>
+<!--ajax登陆-->
+<script type="application/javascript">
+    $(function () {
+
+        /**用户名密码校验*/
+        function check() {
+            if ($("#account").val() == "" || $("#password").val() == "") {
+                $("#alertmess").html("用户名密码不允许为空！");
+                return false;
+            } else {
+                $("#alertmess").html("Your info has been saved.");
+                return true;
+            }
+        }
+
+
+        /**登陆*/
+        $("#loginbtn").click(function () {
+            if (!check()) {
+                return false;
+            }
+            $.post(
+                'index.php?g=admin&c=login&a=login',
+                $("#loginform").serialize(),
+                function (result) {
+                    if (result.errno == 200) {
+                        $("#alertmess").html("登陆成功！");
+                        alert(result.mess + "\n点击确认按钮进入管理后台首页！");
+                        window.location.href = "index.php?g=admin&c=main&a=main";
+                    } else {
+                        $("#alertmess").html("用户名密码不正确！");
+                    }
+                },
+                "json"
+            );
+            return false;
+
+        });
+
+    });
+</script>
+</body>
+
+</html>
