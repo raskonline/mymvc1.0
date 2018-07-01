@@ -18,7 +18,7 @@
         <div class="login-panel panel panel-default">
             <div class="panel-heading">Administrator Login</div>
             <div class="panel-body">
-                <form role="form" method="post" action="#" id="loginform">
+                <form role="form" method="post" action="index.php?g=admin&c=login&a=login" id="loginform">
                     <fieldset>
                         <div class="form-group">
                             <div class="alert alert-success" id="alertmess" role="alert">Your info has been saved.</div>
@@ -36,7 +36,7 @@
                                 <input name="remember" name="remember" type="checkbox" value="Remember Me">Remember Me
                             </label>
                         </div>
-                        <a href="#" id="loginbtn" class="btn btn-primary">Login</a>
+                        <input id="loginbtn" type="submit" value="Login" class="btn btn-primary">
                     </fieldset>
                 </form>
             </div>
@@ -47,11 +47,6 @@
 
 <script src="<?php echo __ADMIN_JS__;?>jquery-1.11.1.min.js"></script>
 <script src="<?php echo __ADMIN_JS__;?>bootstrap.min.js"></script>
-<script src="<?php echo __ADMIN_JS__;?>chart.min.js"></script>
-<script src="<?php echo __ADMIN_JS__;?>chart-data.js"></script>
-<script src="<?php echo __ADMIN_JS__;?>easypiechart.js"></script>
-<script src="<?php echo __ADMIN_JS__;?>easypiechart-data.js"></script>
-<script src="<?php echo __ADMIN_JS__;?>bootstrap-datepicker.js"></script>
 <!--ajax登陆-->
 <script type="application/javascript">
     $(function () {

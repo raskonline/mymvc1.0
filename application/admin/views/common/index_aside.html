@@ -5,13 +5,13 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li <?php if(\core\Application::$action=='index') echo 'class="active"'; ?>><a href="index.php?g=admin&c=index&a=index"><span class="glyphicon glyphicon-dashboard"></span>系统首页</a></li>
-        <li <?php if(\core\Application::$action=='gbmgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=index&a=gbmgr"><span class="glyphicon glyphicon-list-alt"></span>留言管理</a></li>
-        <li <?php if(\core\Application::$action=='usermgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=index&a=usermgr"><span class="glyphicon glyphicon-th"></span>用户管理</a></li>
-        <li <?php if(\core\Application::$action=='bookmgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=index&a=bookmgr"><span class="glyphicon glyphicon-stats"></span>预约管理</a></li>
-        <li <?php if(\core\Application::$action=='newsmgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=index&a=newsmgr"><span class="glyphicon glyphicon-pencil"></span>新闻管理</a></li>
-        <li><a href="index.php?g=admin&c=index&a=index"><span class="glyphicon glyphicon-info-sign"></span>其他管理</a></li>
+        <li <?php if(\core\Application::$action=='index') echo 'class="active"'; ?>><a href="index.php?g=admin&c=main&a=main"><span class="glyphicon glyphicon-dashboard"></span>系统首页</a></li>
+        <li <?php if(\core\Application::$action=='gbmgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=main&a=gbmgr"><span class="glyphicon glyphicon-list-alt"></span>留言管理</a></li>
+        <li <?php if(\core\Application::$action=='usermgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=main&a=usermgr"><span class="glyphicon glyphicon-th"></span>用户管理</a></li>
+        <li <?php if(\core\Application::$action=='bookmgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=main&a=bookmgr"><span class="glyphicon glyphicon-stats"></span>预约管理</a></li>
+        <li <?php if(\core\Application::$action=='newsmgr') echo 'class="active"'; ?>><a href="index.php?g=admin&c=main&a=newsmgr"><span class="glyphicon glyphicon-pencil"></span>新闻管理</a></li>
+        <li><a href="index.php?g=admin&c=main&a=main"><span class="glyphicon glyphicon-info-sign"></span>其他管理</a></li>
         <li role="presentation" class="divider"></li>
-        <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login Out</a></li>
+        <li><a href="index.php?g=admin&c=login&a=logout"><span class="glyphicon glyphicon-user"></span> Login Out</a></li>
     </ul>
 </div>

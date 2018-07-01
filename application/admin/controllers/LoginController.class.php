@@ -41,13 +41,17 @@ class LoginController extends AdminGroupController
             MySession::setSession("syspwd",$syspwd);
             MySession::setSession("sysremember",$sysremember);
             MySession::setSession("sysid",$user['id']);
-            //模拟从数据库读取用户列表
             if($sysremember){
                 MySession::extendSession(1*60*60);
             }
         }
         echo json_encode($feedback, JSON_UNESCAPED_UNICODE);
+    }
 
+    /**注销登陆*/
+    public function logout(){
+        MySession::destorySession();
+        header("location:index.php?g=admin&c=login&a=index");
     }
 
 }

@@ -14,7 +14,7 @@ class AdminGroupController extends Controller
 {
 
     //设置前端不受权限检查的方法
-    private $pass = array("index");
+    private $pass = array("index","login");
 
     public function __construct()
     {
@@ -34,7 +34,7 @@ class AdminGroupController extends Controller
         if (in_array(Application::$action, $this->pass)) {
             //不处理
         } else {
-            if (isset($_SESSION['remember'])) {
+            if (isset($_SESSION['sysremember'])) {
                 //不处理
             } else {
                 header("location:index.php?g=admin&c=login&a=index");
