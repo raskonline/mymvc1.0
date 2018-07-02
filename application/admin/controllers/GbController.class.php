@@ -21,7 +21,7 @@ class GbController extends AdminGroupController
         $pageIndex = isset($_GET['pageIndex']) ? $_GET['pageIndex'] : 1;
         $pageSize = isset($_GET['pageSize']) ? $_GET['pageSize'] : 10;
         $like = isset($_GET['like']) ? $_GET['like'] : null;
-        $gbm = new GbModel();
+        $gbm = new GbModel($like);
         $list = $gbm->listPage($like, $pageIndex, $pageSize);
         $total = $gbm->count();
         $feedback = ["total" => $total, "rows" => $list];
