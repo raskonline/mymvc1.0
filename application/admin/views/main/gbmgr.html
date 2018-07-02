@@ -50,11 +50,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">留言列表</div>
                 <div class="panel-body">
-                    <table id="table" data-toggle="table" data-url="index.php?g=admin&c=gb&a=list" data-show-refresh="true"
-                           data-show-toggle="true" data-show-columns="true" data-search="true"
-                           data-select-item-name="toolbar1" data-pagination="true" data-sort-name="uname"
-                           data-sort-order="desc">
-
+                    <table id="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true">
                     </table>
                 </div>
             </div>
@@ -75,18 +71,18 @@
         queryParams: function (params) { // 请求服务器数据时发送的参数，可以在这里添加额外的查询参数，返回false则终止请求
             return {
                 pageSize: params.limit, // 每页要显示的数据条数
-                pageIndex:(params.offset / params.limit) + 1   //页码
-                //like: 'mi'//$("#dataId").val() // 模糊查询参数
+                pageIndex:(params.offset / params.limit) + 1,   //页码
+                like:params.search //获取搜索框内容
+
             }
         },
-        sortName: 'id', // 要排序的字段
-        sortOrder: 'desc', // 排序规则
+        search:true, //启用搜索
         columns: [
             {
                 checkbox: true, // 显示一个勾选框
                 field: 'id',
                 align: 'center' // 居中显示
-            }, {
+              }, {
                 field: 'uname', // 返回json数据中的name
                 title: '姓名', // 表格表头显示文字
                 align: 'center', // 左右居中

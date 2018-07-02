@@ -23,7 +23,7 @@ class GbController extends AdminGroupController
         $like = isset($_GET['like']) ? $_GET['like'] : null;
         $gbm = new GbModel($like);
         $list = $gbm->listPage($like, $pageIndex, $pageSize);
-        $total = $gbm->count();
+        $total = $gbm->count($like);
         $feedback = ["total" => $total, "rows" => $list];
         echo json_encode($feedback, JSON_UNESCAPED_UNICODE);
     }
