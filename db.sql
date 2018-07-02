@@ -24,7 +24,7 @@ SELECT COUNT(1) as total FROM guestbook;
 
 SELECT * FROM guestbook WHERE uname LIKE  CONCAT('%','mi','%') ORDER BY id DESC LIMIT 1,5;
 
-DELETE FROM guestbook WHERE id=1;
+SELECT * FROM guestbook WHERE uname LIKE '%an%';
 
 # 创建hpuser数据表
 DROP TABLE IF EXISTS hpuser;
