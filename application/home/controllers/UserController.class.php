@@ -94,6 +94,3 @@ class UserController extends HomeGroupController
     }
 }
 
-//$uc=new UserController();
-//$uc->login();
-
