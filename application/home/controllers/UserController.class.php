@@ -1,14 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/6/29
- * Time: 13:55
- */
-
 namespace application\home\controllers;
-
-
 use application\home\models\UserModel;
 use core\mybase\HomeGroupController;
 use core\MySession;
@@ -49,9 +40,9 @@ class UserController extends HomeGroupController
     public function login()
     {
         $feedback = ["errno" => 500, "mess" => "账号密码不正确！"];
-        $uname=$_POST['uname'];
-        $upwd=md5($_POST['upwd']);
-        $args = [$uname,$upwd];
+        $uname = $_POST['uname'];
+        $upwd = md5($_POST['upwd']);
+        $args = [$uname, $upwd];
         //remember
         $remember = isset($_POST['remember']) ? true : false;
         $um = new UserModel();
@@ -60,15 +51,15 @@ class UserController extends HomeGroupController
             $feedback = ["errno" => 200, "mess" => "登陆成功！"];
             //用户自动登陆
             MySession::start();//注意：初始化UserController已经启动session，再次启动会导致错误。修改start（）方法，启动session时候需要判断
-            MySession::setSession("uname",$uname);
-            MySession::setSession("upwd",$upwd);
-            MySession::setSession("remember",$remember);
-            MySession::setSession("uemail",$user['uemail']);
-            MySession::setSession("uid",$user['uid']);
+            MySession::setSession("uname", $uname);
+            MySession::setSession("upwd", $upwd);
+            MySession::setSession("remember", $remember);
+            MySession::setSession("uemail", $user['uemail']);
+            MySession::setSession("uid", $user['uid']);
             //模拟从数据库读取用户列表
-            MySession::setSession('ulist',[array("id"=>1001,"name"=>"张三"),array("id"=>1002,"name"=>"李四"),array("id"=>1001,"name"=>"王五")]);
-            if($remember){
-                MySession::extendSession(1*60*60);
+            MySession::setSession('ulist', [array("id" => 1001, "name" => "张三"), array("id" => 1002, "name" => "李四"), array("id" => 1001, "name" => "王五")]);
+            if ($remember) {
+                MySession::extendSession(1 * 60 * 60);
             }
         }
         //var_dump($_SESSION);
@@ -80,17 +71,49 @@ class UserController extends HomeGroupController
     {
         //用户中心数据显示
         //从session中获取用户信息
-        $uid=$_SESSION['uid'];
-        $uname=$_SESSION['uname'];
-        $uemial=$_SESSION['uemail'];
-        $ulist=$_SESSION['ulist'];
+        $uid = $_SESSION['uid'];
+        $uname = $_SESSION['uname'];
+        $uemial = $_SESSION['uemail'];
+        $ulist = $_SESSION['ulist'];
         //数据分配到视图中
-        $this->assign('uid',$uid);
-        $this->assign('uname',$uname);
-        $this->assign('uemail',$uemial);
-        $this->assign('ulist',$ulist);
+        $this->assign('uid', $uid);
+        $this->assign('uname', $uname);
+        $this->assign('uemail', $uemial);
+        $this->assign('ulist', $ulist);
         //打开视图
         $this->display();
+    }
+
+    /**忘记密码*/
+    public function forgot()
+    {
+        $tomail = isset($_POST["email"])?$_POST["email"]:"####@qq.com";
+        $mail = new \PHPMailer();
+        $mail->SMTPDebug = 3;
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Host = 'smtp.qq.com';
+        $mail->SMTPSecure = 'ssl';
+        //设置ssl连接smtp服务器的远程服务器端口号 可选465或587
+        $mail->Port = 465;
+        $mail->Hostname = 'localhost';
+        $mail->CharSet = 'UTF-8';
+        $mail->FromName = '系统管理员';//发件人姓名
+        $mail->Username = '####';//qq邮箱账号
+        $mail->Password = '####';//qq邮箱客户端授权码
+        $mail->From = '####@qq.com';
+        $mail->isHTML(true);
+        $mail->addAddress($tomail, '用户');
+        $mail->Subject = '密码重置';
+        $mail->Body = "这是一个<b style=\"color:red;\">PHPMailer</b>发送邮件的一个测试用例";
+        //$mail->addAttachment('./src/20151002.png','test.png');
+        $status = $mail->send();
+        if ($status) {
+            $this->error("操作失败！","?g=home&c=login&a=index");
+        }else{
+            $this->error("操作失败！","?g=home&c=user&a=forgot");
+        }
+
     }
 }
 

@@ -4,6 +4,9 @@
 require "configs/config.php";
 require "configs/constants.php";
 
+require 'core/PHPMailer/class.phpmailer.php';
+require 'core/PHPMailer/class.smtp.php';
+
 //2.注册自动加载方法
 require "core/MyLoad.class.php";
 \core\MyLoad::registerAutoLoad();

@@ -25,21 +25,21 @@
 				<div class="col-md-4 col-md-offset-4">
 
 					<!-- Start Sign In Form -->
-					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+					<form action="index.php?g=home&c=user&a=forgot" method="post" id="forgotform" class="fh5co-form animate-box" data-animate-effect="fadeIn">
 						<h2>Forgot Password</h2>
 						<div class="form-group">
-							<div class="alert alert-success" role="alert">Your email has been sent.</div>
+							<div class="alert alert-success" id="alertmess" role="alert">Please enter the mailbox.</div>
 						</div>
 						<div class="form-group">
 							<label for="email" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off">
+							<input type="text" name="email" class="form-control" id="email" placeholder="Email" autocomplete="off">
 						</div>
 						<div class="form-group">
 							<p><a href="index.php?g=home&c=login&a=index">Sign In</a> or
 								<a href="index.php?g=home&c=login&a=signup">Sign Up</a></p>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="Send Email" class="btn btn-primary">
+							<input type="submit" id="forgotbtn" value="Send Email" class="btn btn-primary">
 						</div>
 					</form>
 					<!-- END Sign In Form -->
@@ -62,7 +62,25 @@
 	<script src="<?php echo __LOGIN_JS__;?>jquery.waypoints.min.js"></script>
 	<!-- Main JS -->
 	<script src="<?php echo __LOGIN_JS__;?>main.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#forgotbtn").click(function () {
+                var regmail=/^\w+@\w+.[a-zA-Z]{2,3}(.[a-zA-Z]{2,3})?$/;
+                var $email=$("#email").val();
 
+                alert($email);
+
+			    if(regmail.test($email)==false){
+			        $("#alertmess").html("电子邮箱格式不正确！");
+			        return false;
+				}
+
+			    $("#forgotform").submit();
+            });
+        });
+	</script>
+
+	<div id="test"></div>
 	</body>
 </html>
 

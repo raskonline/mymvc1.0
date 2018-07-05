@@ -135,7 +135,7 @@
                     alert(data.mess+"\n点击确认返回留言管理页！");
                     window.location.href="index.php?g=admin&c=main&a=gbmgr";
                 }else{
-                    alert(data.mess);
+                    var flag= confirm(data.mess);
                     window.location.href="index.php?g=admin&c=main&a=gbmgr";
                 }
             },
